@@ -77,13 +77,13 @@ a {
 }
 
 .navbar ul li a:hover {
-  color: #007BFF;
+  color: #007bff;
   /* Màu chữ khi hover */
 }
 
 /* Background chính */
 .background-section {
-  background-image: url('BANNER.png');
+  background-image: url("https://drive.google.com/file/d/1XZY8AUz_qrbwTbM_9izSTl0m9gWI1RKl/preview");
   /* Đặt đường dẫn hình ảnh */
   background-size: 100% 100%;
   /* Đảm bảo hình ảnh chiếm toàn bộ khung */
@@ -105,7 +105,7 @@ a {
 
 /* Nền từng trang */
 .background-section.trang01-background {
-  background-image: url('trangtieuchuan.png');
+  background-image: url("trangtieuchuan.png");
   /* Nền riêng cho trang Giới Thiệu */
   background-size: 100% 100%;
   /* Đảm bảo hình ảnh chiếm toàn bộ khung */
@@ -124,22 +124,22 @@ a {
 }
 
 .background-section.trang02-background {
-  background-image: url('trangtieuchuan.png');
+  background-image: url("trangtieuchuan.png");
   /* Nền riêng cho trang Hoạt Động */
 }
 
 .background-section.news-background {
-  background-image: url('trangtieuchuan.png');
+  background-image: url("trangtieuchuan.png");
   /* Nền riêng cho trang Tin Tức */
 }
 
 .background-section.contact-background {
-  background-image: url('trangtieuchuan.png');
+  background-image: url("trangtieuchuan.png");
   /* Nền riêng cho trang Liên Hệ */
 }
 
 .background-section.support-background {
-  background-image: url('trangtieuchuan.png');
+  background-image: url("trangtieuchuan.png");
   /* Nền riêng cho trang Hỗ Trợ */
 }
 
@@ -250,7 +250,7 @@ a {
 
 /* Button back */
 .goback-button button {
-  background-color: #007BFF;
+  background-color: #007bff;
   /* Màu xanh dương */
   color: white;
   /* Chữ màu trắng */
@@ -283,7 +283,7 @@ a {
   padding: 10px 20px;
   font-size: 16px;
   color: white;
-  background-color: #007BFF;
+  background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -368,8 +368,6 @@ a {
   /* Để hình ảnh vừa khít chiều cao banner */
 }
 
-
-
 .fullscreen-div {
   display: flex;
   justify-content: center;
@@ -393,7 +391,7 @@ a {
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
