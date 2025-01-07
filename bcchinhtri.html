@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BÁO CÁO CHÍNH TRỊ</title>
+  <link rel="stylesheet" href="trang02.css"> <!-- Liên kết file CSS mới -->
+  <link rel="stylesheet" href="trang01.css"> <!-- Liên kết file CSS mới -->
+</head>
+
+<body>
+
+  <!-- Nền chính -->
+  <div class="trang01-background">
+
+    <!-- Back button -->
+    <div class="goback-button">
+      <!-- <button class="back-button"></button> -->
+      <a href="index.html" class="back-button">VỀ TRANG CHỦ</a>
+    </div>
+
+    <!-- Content ở giữa -->
+    <div class="content-box">
+      <!-- Component 1: Giới thiệu -->
+      <div class="content-component">
+        <div class="container">
+          <div class="file-list">
+            <!-- File cards dynamically generated here -->
+          </div>
+        </div>
+
+        <!-- Modal for File Viewer -->
+        <div class="modal" id="fileModal">
+          <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <iframe id="modalFile" src="" frameborder="0"></iframe>
+          </div>
+        </div>
+
+        <script>
+          const files = [
+            {
+              name: "BÁO CÁO CHÍNH TRỊ",
+              link: "BCCT/BCCT.pdf"
+            }, {
+              name: "BACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+              link: "BCCT/Bia.pdf"
+            }, {
+              name: "file 1",
+              link: "BCCT/BCCT.pdf"
+            }, {
+              name: "file 2",
+              link: "BCCT/Bia.pdf"
+            }, {
+              name: "file 1",
+              link: "BCCT/BCCT.pdf"
+            },
+            {
+              name: "file 1",
+              link: "BCCT/BCCT.pdf"
+            },
+            {
+              name: "file 1",
+              link: "BCCT/BCCT.pdf"
+            },
+            {
+              name: "file 1",
+              link: "BCCT/BCCT.pdf"
+            },
+            {
+              name: "file 1",
+              link: "BCCT/BCCT.pdf"
+            },{
+              name: "file 1",
+              link: "BCCT/BCCT.pdf"
+            },
+          ]
+
+          const fileList = document.querySelector('.file-list');
+          const modal = document.getElementById('fileModal');
+          const modalFile = document.getElementById('modalFile');
+          const closeModal = document.getElementById('closeModal');
+
+          files.forEach(file => {
+            const fileCard = document.createElement('div');
+            fileCard.className = 'file-card';
+            fileCard.textContent = file.name;
+            fileCard.addEventListener('click', () => {
+              modalFile.src = file.link + "#toolbar=0&navpanes=0&scrollbar=0";
+              modal.style.display = 'flex';
+            });
+            fileList.appendChild(fileCard);
+          });
+
+          closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalFile.src = "";
+          });
+
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              modal.style.display = 'none';
+              modalFile.src = "";
+            }
+          });
+        </script>
+
+
+        <!-- <div class="pdf-wrapper video-wrapper">
+
+
+          <div class="map-card">
+            <h3>BC SỐ 10</h3>
+            <embed src="BCCT/BCCT.pdf#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" />
+          </div>
+
+
+
+        </div> -->
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

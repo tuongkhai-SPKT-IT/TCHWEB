@@ -1,0 +1,304 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+/* Thanh điều hướng */
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng đổ bóng */
+    position: sticky;
+    /* fixed; */
+    /* Cố định trên đầu trang */
+    top: 0;
+    /* left: 0; */
+    width: 100%;
+    /* z-index: 1000; */
+    /* Đảm bảo nằm trên background */
+    padding: 10px 20px;
+    display: flex;
+    /* flex: 1; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Các mục menu */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: auto;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.navbar ul li {
+    text-align: center;
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: auto;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #007BFF;
+    /* Màu chữ khi hover */
+}
+
+/* Phần nền trang About */
+.trang01-background {
+    background-image: url('trangtieuchuan.png');
+    /* Đặt đường dẫn hình ảnh */
+    background-size: 100% 100%;
+    /* Đảm bảo hình ảnh chiếm toàn bộ khung */
+    background-position: center;
+    /* Canh giữa hình ảnh */
+    background-repeat: no-repeat;
+    /* Không lặp lại hình ảnh */
+    background-attachment: fixed;
+    /* height: 100vh; */
+    /* Chiều cao chiếm toàn bộ màn hình */
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding-top: 15px;
+    justify-items: center;
+}
+
+/* Khung nội dung chính */
+.about-content {
+    max-width: 800px;
+    padding: 30px 40px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+.about-content h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+}
+
+/* Video trong trang */
+.about-content video {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Nội dung mô tả */
+.about-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Scrollable Content (Bảng nội dung cuộn) */
+.scrollable-content {
+    max-width: 45%;
+    /* Giảm chiều rộng xuống 45% của màn hình */
+    height: 35vh;
+    /* Giảm chiều cao xuống 35% của màn hình */
+    max-height: 70vh;
+    /* Thanh cuộn dọc */
+    /* Không cho phép cuộn ngang */
+    margin: 0 auto;
+    /* Canh giữa */
+    padding: 15px;
+    /* Thu hẹp khoảng cách padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng đổ bóng */
+    background-color: white;
+    /* Nền trắng */
+    border-radius: 8px;
+    /* Bo góc */
+    word-wrap: break-word;
+    /* Tự động xuống dòng nếu chữ quá dài */
+    text-align: center;
+}
+
+/* Video styling */
+.scrollable-content video {
+    max-width: 100%;
+    /* Đảm bảo video không vượt khung */
+    height: auto;
+    /* Giữ tỉ lệ khung hình gốc */
+    margin-bottom: 10px;
+    /* Khoảng cách dưới video */
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Màu thanh cuộn */
+    border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Màu khi hover */
+}
+
+/* Component */
+.component {
+    margin-bottom: 20px;
+}
+
+.component h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.component p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.content-component {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-box {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: -webkit-fill-available;
+    text-align: center;
+}
+
+
+/* Video Wrapper */
+.video-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.video-wrapper video {
+    max-width: 100%;
+    /* Video vừa khung */
+    max-height: 300px;
+    /* Giới hạn chiều cao video */
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.goback-button {
+    position: absolute;
+    /* Đặt vị trí tương đối so với background */
+    top: 70px;
+    /* Cách dưới thanh navbar */
+    left: 20px;
+    /* Cách mép trái màn hình */
+    z-index: 900;
+    /* Đảm bảo nằm trên background nhưng dưới navbar */
+    text-decoration: none;
+}
+
+.goback-button button {
+    background-color: #007BFF;
+    /* Màu nền */
+    color: white;
+    /* Màu chữ */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Hiệu ứng đổ bóng */
+    transition: transform 0.2s, background-color 0.3s;
+    text-decoration: none;
+}
+
+.goback-button button:hover {
+    background-color: #0056b3;
+    /* Màu đậm hơn khi hover */
+    transform: scale(1.05);
+    /* Tăng nhẹ kích thước */
+}
+
+.goback-button button:active {
+    transform: scale(0.95);
+    /* Nhỏ lại khi nhấn */
+}
+
+/* Nút Quay lại */
+.back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-content {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .about-content h2 {
+        font-size: 20px;
+    }
+
+    .about-content p {
+        font-size: 14px;
+    }
+}

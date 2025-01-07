@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KỶ NGUYÊN CÔNG NGHỆ SỐ</title>
+  <link rel="stylesheet" href="trang02.css"> <!-- Liên kết file CSS mới -->
+  <link rel="stylesheet" href="trang01.css"> <!-- Liên kết file CSS mới -->
+  <link rel="stylesheet" href="trang03.css"> <!-- Liên kết file CSS mới -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organization Members</title>
+
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li><a href="kynguyenso.html">KỶ NGUYÊN SỐ</a></li>
+      <li><a href="tanchanhhiep.html">TÂN CHÁNH HIỆP</a></li>
+      <li><a href="bcchinhtri.html">BÁO CÁO CHÍNH TRỊ</a></li>
+      <li><a href="ctdaihoi.html">CHƯƠNG TRÌNH ĐẠI HỘI</a></li>
+      <li><a href="danhsachcacto.html">DANH SÁCH TỔ THẢO LUẬN</a></li>
+    </ul>
+  </div>
+
+  <div class="container trang01-background">
+    <div class="member-list">
+      <!-- Member cards dynamically generated here -->
+    </div>
+  </div>
+
+  <!-- Modal for Enlarged Image -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <span class="modal-close" id="closeModal">&times;</span>
+      <img id="modalImage" src="" alt="Enlarged Member Image">
+    </div>
+  </div>
+
+  <script>
+    const members = Array.from({ length: 165 }, (_, i) => ({
+      name: `Member ${i + 1}`,
+      role: `Role ${i + 1}`,
+      image: `./hinhdaibieu/${i + 1}.jpg`,
+    }));
+
+    const memberList = document.querySelector('.member-list');
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+
+    members.forEach(member => {
+      const memberCard = document.createElement('div');
+      memberCard.className = 'member-card';
+      memberCard.innerHTML = `
+            <img src="${member.image}" alt="${member.name}">
+            <h3>Bí thư ${member.name} <br/> 
+              </h3>
+            <p>${member.role}</p>
+        `;
+      memberCard.querySelector('img').addEventListener('click', () => {
+        modalImage.src = member.image;
+        modal.style.display = 'flex';
+      });
+      memberList.appendChild(memberCard);
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>
