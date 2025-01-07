@@ -1,0 +1,6 @@
+# ignore ALL extension files below
+*.png
+*.jpg
+*.txt
+*.pdf
+*.mp4
