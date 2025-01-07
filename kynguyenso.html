@@ -7,6 +7,7 @@
   <title>KỶ NGUYÊN CÔNG NGHỆ SỐ</title>
   <link rel="stylesheet" href="trang01.css"> <!-- Liên kết file CSS mới -->
   <link rel="stylesheet" href="kynguyenso.css"> <!-- Liên kết file CSS mới -->
+  <script src="constants.js"></script><!-- Liên kết link các folder public tài nguyên -->
 </head>
 
 <body id="mainFrame">
@@ -77,7 +78,9 @@
       document.getElementById("mainFrame").style = "overflow: hidden;"
       showSlide(currentIndex);
       const currentVideo = modalSlides.children[currentIndex].querySelector('video');
-      currentVideo.muted = false
+      // setTimeout(() => {
+      //   currentVideo.muted = false
+      // }, 1000);
     };
 
     // Close modal when clicking the close button
@@ -105,13 +108,45 @@
       <a href="index.html" class="back-button">VỀ TRANG CHỦ</a>
     </div>
 
+    <script>
+      async function fetchfolderVideo() {
+        const url = `https://www.googleapis.com/drive/v3/files?q='${video.id}'+in+parents&key=${API_KEY}&fields=files(id,name,webViewLink)`;
 
+        const response = await fetch(url);
+        const data = await response.json();
+        const videoArea = document.querySelector('.content-box');
+
+        data.files.forEach(file => {
+          const videoBox = document.createElement('div');
+          videoBox.className = 'content-component';
+          console.log(`https://drive.google.com/uc?export=download&id=${file.id}`)
+          videoBox.innerHTML =
+            ` 
+              <h2 style="width: 50%; font-size: larger;">${file.name.substring(0, file.name.lastIndexOf("."))}</h2>
+              <div class="video-wrapper">
+                <video width="50%" style="margin-top: 20px; " controls>
+                <source
+                  src="https://drive.google.com/file/d/${file.id}"
+                  type="video/mp4">
+                </video>
+              </div>
+            `
+          // videoBox.textContent = file.name;
+          videoArea.appendChild(videoBox);
+        });
+
+
+
+      }
+      fetchfolderVideo()
+
+    </script>
 
     <!-- Content ở giữa -->
     <div class="content-box">
 
       <!-- Component 1: Triển khai dự án đường sắt -->
-      <div class="content-component">
+      <!-- <div class="content-component">
         <h2 style="width: 50%; font-size: larger;">CHÍNH THỨC TRIỂN KHAI DỰ ÁN ĐƯỜNG SẮT TỐC ĐỘ CAO BẮC NAM</h2>
         <div class="video-wrapper">
           <video width="50%" style="margin-top: auto; " controls>
@@ -120,10 +155,10 @@
               type="video/mp4">
           </video>
         </div>
-      </div>
+      </div> -->
 
       <!-- Component 2: Những tiền đề quan trọng -->
-      <div class="content-component">
+      <!-- <div class="content-component">
         <h2 style="width: 50%; font-size: larger;">NHỮNG TIỀN ĐỀ QUAN TRỌNG ĐỂ THÀNH PHỐ HỒ CHÍ MINH <br />
           VƯƠN MÌNH TRONG KỶ NGUYÊN MỚI</h2>
         <div class="video-wrapper">
@@ -131,27 +166,27 @@
             <source src="video/Nhung tien de quan trong de TPHCM vuon minh trong ky nguyen moi.mp4" type="video/mp4">
           </video>
         </div>
-      </div>
+      </div> -->
 
       <!-- Component 3: quốc hội thông qua -->
-      <div class="content-component">
+      <!-- <div class="content-component">
         <h2 style="width: 50%; font-size: larger;">QUỐC HỘI CHÍNH THỨC THÔNG QUA ĐƯỜNG SẮT BẮC NAM</h2>
         <div class="video-wrapper">
           <video width="50%" controls>
             <source src="video/Quốc hội chính thức thông qua đường sắt tốc độ cao Bắc - Nam.mp4" type="video/mp4">
           </video>
         </div>
-      </div>
+      </div> -->
 
       <!-- Component 4: 10 dấu ấn -->
-      <div class="content-component">
+      <!-- <div class="content-component">
         <h2 style="width: 50%; font-size: larger;">10 DẤU ẤN NỔI BẬT THÀNH PHỐ HỒ CHÍ MINH NĂM 2024</h2>
         <div class="video-wrapper">
           <video width="50%" controls>
             <source src="video/10 DẤU ẤN NỔI BẬT THÀNH PHỐ HỒ CHÍ MINH - NĂM 2024.mp4" type="video/mp4">
           </video>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>

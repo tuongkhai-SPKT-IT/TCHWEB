@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Drive File Viewer</title>
+    <script src="constants.js"></script><!-- Liên kết link các folder public tài nguyên -->
+</head>
+
+<body>
+    <h1>Files from Google Drive</h1>
+    <ul id="file-list"></ul>
+
+    <script>
+        // const folderId = "YOUR_FOLDER_ID"; // Thay bằng ID thư mục Google Drive
+        // const apiKey = "YOUR_API_KEY"; // Thay bằng API Key của bạn
+
+        async function fetchFiles() {
+            const url = `https://www.googleapis.com/drive/v3/files?q='${bcct.id}'+in+parents&key=${API_KEY}&fields=files(id,name,webViewLink)`;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const fileList = document.getElementById("file-list");
+            fileList.innerHTML = "";
+            console.log(data)
+            data.files.forEach(file => {
+                const li = document.createElement("li");
+                const linkCut = file.webViewLink.substring(0, file.webViewLink.lastIndexOf("/"))
+                console.log(linkCut + "/preview");
+                li.innerHTML = `<iframe 
+                    src="${linkCut}/preview" 
+                    width="100%" 
+                    height="500px" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>`
+                // li.innerHTML = `<a href="${file.webViewLink}" target="_blank">${file.name}</a>`;
+                fileList.appendChild(li);
+            });
+        }
+
+        fetchFiles();
+    </script>
+</body>
+
+</html>

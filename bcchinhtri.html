@@ -7,6 +7,7 @@
   <title>BÁO CÁO CHÍNH TRỊ</title>
   <link rel="stylesheet" href="trang02.css"> <!-- Liên kết file CSS mới -->
   <link rel="stylesheet" href="trang01.css"> <!-- Liên kết file CSS mới -->
+  <script src="constants.js"></script><!-- Liên kết link các folder public tài nguyên -->
 </head>
 
 <body>
@@ -39,85 +40,48 @@
         </div>
 
         <script>
-          const files = [
-            {
-              name: "BÁO CÁO CHÍNH TRỊ",
-              link: "BCCT/BCCT.pdf"
-            }, {
-              name: "BACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-              link: "BCCT/Bia.pdf"
-            }, {
-              name: "file 1",
-              link: "BCCT/BCCT.pdf"
-            }, {
-              name: "file 2",
-              link: "BCCT/Bia.pdf"
-            }, {
-              name: "file 1",
-              link: "BCCT/BCCT.pdf"
-            },
-            {
-              name: "file 1",
-              link: "BCCT/BCCT.pdf"
-            },
-            {
-              name: "file 1",
-              link: "BCCT/BCCT.pdf"
-            },
-            {
-              name: "file 1",
-              link: "BCCT/BCCT.pdf"
-            },
-            {
-              name: "file 1",
-              link: "BCCT/BCCT.pdf"
-            },{
-              name: "file 1",
-              link: "BCCT/BCCT.pdf"
-            },
-          ]
+          async function fetchfolderBCCT() {
+            const url = `https://www.googleapis.com/drive/v3/files?q='${bcct.id}'+in+parents&key=${API_KEY}&fields=files(id,name,webViewLink)`;
 
-          const fileList = document.querySelector('.file-list');
-          const modal = document.getElementById('fileModal');
-          const modalFile = document.getElementById('modalFile');
-          const closeModal = document.getElementById('closeModal');
-
-          files.forEach(file => {
-            const fileCard = document.createElement('div');
-            fileCard.className = 'file-card';
-            fileCard.textContent = file.name;
-            fileCard.addEventListener('click', () => {
-              modalFile.src = file.link + "#toolbar=0&navpanes=0&scrollbar=0";
-              modal.style.display = 'flex';
+            const response = await fetch(url);
+            const data = await response.json();
+            const fileList = document.querySelector('.file-list');
+            const modal = document.getElementById('fileModal');
+            const modalFile = document.getElementById('modalFile');
+            const closeModal = document.getElementById('closeModal');
+            data.files.forEach(file => {
+              const fileCard = document.createElement('div');
+              fileCard.className = 'file-card';
+              fileCard.textContent = file.name;
+              fileCard.addEventListener('click', () => {
+                modalFile.src = file.webViewLink.substring(0, file.webViewLink.lastIndexOf("/")) + "/preview#toolbar=0&navpanes=0&scrollbar=0";
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                  console.log(document.getElementsByClassName("ndfHFb-c4YZDc-Wrql6b"))
+                }, 7000);
+              });
+              fileList.appendChild(fileCard);
             });
-            fileList.appendChild(fileCard);
-          });
 
-          closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-            modalFile.src = "";
-          });
-
-          modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
+            closeModal.addEventListener('click', () => {
               modal.style.display = 'none';
               modalFile.src = "";
-            }
-          });
+            });
+
+            modal.addEventListener('click', (e) => {
+              if (e.target === modal) {
+                modal.style.display = 'none';
+                modalFile.src = "";
+              }
+            });
+
+          }
+          fetchfolderBCCT()
+
         </script>
 
 
-        <!-- <div class="pdf-wrapper video-wrapper">
 
-
-          <div class="map-card">
-            <h3>BC SỐ 10</h3>
-            <embed src="BCCT/BCCT.pdf#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" />
-          </div>
-
-
-
-        </div> -->
       </div>
     </div>
   </div>
